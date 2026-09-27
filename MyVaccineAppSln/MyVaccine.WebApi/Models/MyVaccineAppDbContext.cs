@@ -5,7 +5,7 @@ namespace MyVaccine.WebApi.Models;
 public class MyVaccineAppDbContext : DbContext
 {
     public MyVaccineAppDbContext(DbContextOptions<MyVaccineAppDbContext> options) : base(options)
-    {        
+    {
     }
 
     public DbSet<User> Users => Set<User>();
@@ -21,7 +21,7 @@ public class MyVaccineAppDbContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         // ---- User Configuration ----
-        modelBuilder.Entity<User>(entity => 
+        modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(u => u.Id);
 
@@ -39,7 +39,7 @@ public class MyVaccineAppDbContext : DbContext
         });
 
         // ---- Dependent Configuration ----
-        modelBuilder.Entity<Dependent>(entity => 
+        modelBuilder.Entity<Dependent>(entity =>
         {
             entity.HasKey(d => d.Id);
 
@@ -57,7 +57,7 @@ public class MyVaccineAppDbContext : DbContext
         });
 
         // ---- VaccineCategory Configuration ----
-        modelBuilder.Entity<VaccineCategory>(entity => 
+        modelBuilder.Entity<VaccineCategory>(entity =>
         {
             entity.HasKey(vc => vc.Id);
 
@@ -67,7 +67,7 @@ public class MyVaccineAppDbContext : DbContext
         });
 
         // ---- Vaccine Configuration ----
-        modelBuilder.Entity<Vaccine>(entity => 
+        modelBuilder.Entity<Vaccine>(entity =>
         {
             entity.HasKey(v => v.Id);
 
@@ -81,7 +81,7 @@ public class MyVaccineAppDbContext : DbContext
         });
 
         // ---- VaccineRecord Configuration ----
-        modelBuilder.Entity<VaccineRecord>(entity => 
+        modelBuilder.Entity<VaccineRecord>(entity =>
         {
             entity.HasKey(vr => vr.Id);
 
@@ -113,7 +113,7 @@ public class MyVaccineAppDbContext : DbContext
         });
 
         // ---- Vaccine Configuration ----
-        modelBuilder.Entity<Allergy>(entity => 
+        modelBuilder.Entity<Allergy>(entity =>
         {
             entity.HasKey(a => a.Id);
 
@@ -128,7 +128,7 @@ public class MyVaccineAppDbContext : DbContext
         });
 
         // ---- FamilyGroup Configuration ----
-        modelBuilder.Entity<FamilyGroup>(entity => 
+        modelBuilder.Entity<FamilyGroup>(entity =>
         {
             entity.HasKey(fg => fg.Id);
 
