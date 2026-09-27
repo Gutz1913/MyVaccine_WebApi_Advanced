@@ -3,11 +3,14 @@ using MyVaccine.WebApi.Configurations;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.SetDatabaseConfiguration();
 
 builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.SetDatabaseConfiguration();
+builder.Services.SetMyVaccineAuthConfiguration();
 
 var app = builder.Build();
 
@@ -22,6 +25,7 @@ app.MapGet("/", () => Results.Redirect("/swagger"));
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
