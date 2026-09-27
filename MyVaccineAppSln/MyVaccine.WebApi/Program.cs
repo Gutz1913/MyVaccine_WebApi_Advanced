@@ -1,13 +1,9 @@
-using Microsoft.EntityFrameworkCore;
-using MyVaccine.WebApi.Models;
+using MyVaccine.WebApi.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
- //── Entity Framework Core ──
-builder.Services.AddDbContext<MyVaccineAppDbContext>(options =>
-    options.UseSqlServer("Server=localhost,14330;Database=MyVaccineAppDb;User Id=sa;Password=Abc.123456;TrustServerCertificate=true;"));
+builder.Services.SetDatabaseConfiguration();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
