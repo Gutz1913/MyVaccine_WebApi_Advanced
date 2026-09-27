@@ -7,5 +7,5 @@ public class Dependent
     public DateTime BirthDate { get; set; }
     public int UserId { get; set; }
     public User User { get; set; } = null!;
-    public List<VaccineRecord> VaccineRecrods { get; set; } = new List<VaccineRecord>();
+    public List<VaccineRecord> VaccineRecords { get; set; } = new List<VaccineRecord>();
 }
