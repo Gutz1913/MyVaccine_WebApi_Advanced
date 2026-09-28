@@ -8,11 +8,10 @@ public static class DbConfigurations
 {
     public static IServiceCollection SetDatabaseConfiguration(this IServiceCollection services)
     {
-        var connectionString = Environment.GetEnvironmentVariable(MyVaccineLiterals.CONNECTION_STRING)
+        var connectionString = Environment.GetEnvironmentVariable(MyVaccineLiterals.CONNECTION_STRING);
         services.AddDbContext<MyVaccineAppDbContext>(options =>
             options.UseSqlServer(
-                connectionString
-                )
+                connectionString)
             );
         return services;
     }
