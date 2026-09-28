@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyVaccine.WebApi.Models;
 
-public class MyVaccineAppDbContext : DbContext
+public class MyVaccineAppDbContext : IdentityDbContext<IdentityUser>
 {
     public MyVaccineAppDbContext(DbContextOptions<MyVaccineAppDbContext> options) : base(options)
     {
