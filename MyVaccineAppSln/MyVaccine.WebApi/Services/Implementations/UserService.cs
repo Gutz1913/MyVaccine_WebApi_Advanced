@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MyVaccine.WebApi.DTOs;
 using MyVaccine.WebApi.Literals;
+using MyVaccine.WebApi.Models;
 using MyVaccine.WebApi.Repositories.Contracts;
 using MyVaccine.WebApi.Services.Contracts;
 using System.IdentityModel.Tokens.Jwt;
@@ -125,6 +127,14 @@ public class UserService : IUserService
             response.IsSuccess = false;
             response.Errors = new string[] { ex.Message };
         }
+
+        return response;
+    }
+
+    public async Task<User> GetUserInfo(string email)
+    {
+        var user = await _userManager.FindByNameAsync(email);
+        var response = await _userRepository.FindByAsNoTracking(x => x.AspNetUserId == user.Id).FirstOrDefaultAsync();
 
         return response;
     }
