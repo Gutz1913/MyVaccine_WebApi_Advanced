@@ -26,17 +26,17 @@ public class MyVaccineAppDbContext : IdentityDbContext<IdentityUser>
         {
             entity.HasKey(u => u.Id);
 
-            entity.Property(u => u.UserName)
+            entity.Property(u => u.FirstName)
                   .IsRequired()
                   .HasMaxLength(100);
 
-            entity.Property(u => u.Email)
+            entity.Property(u => u.LastName)
                   .IsRequired()
                   .HasMaxLength(100);
 
-            entity.Property(u => u.Password)
-                  .IsRequired()
-                  .HasMaxLength(100);
+            entity.HasOne(u => u.AspNetUser)
+                  .WithMany()
+                  .HasForeignKey(u => u.AspNetUserId);
         });
 
         modelBuilder.Entity<Dependent>(entity =>
