@@ -1,16 +1,13 @@
-using Microsoft.EntityFrameworkCore;
-using MyVaccine.WebApi.Models;
+using MyVaccine.WebApi.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ── Entity Framework Core ──
-builder.Services.AddDbContext<MyVaccineAppDbContext>(options =>
-    options.UseSqlServer("Server=localhost,14330;Database=MyVaccineAppDb;User Id=sa;Password=Abc.123456;TrustServerCertificate=true;"));
 
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.SetDatabaseConfiguration();
 
 var app = builder.Build();
 
