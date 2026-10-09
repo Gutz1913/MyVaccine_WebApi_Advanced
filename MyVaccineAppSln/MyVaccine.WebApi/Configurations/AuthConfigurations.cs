@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using MyVaccine.WebApi.Models;
-using System.Text;
 
 namespace MyVaccine.WebApi.Configurations;
 
@@ -23,11 +22,11 @@ public static class AuthConfigurations
         ).AddEntityFrameworkStores<MyVaccineAppDbContext>()
         .AddDefaultTokenProviders();
 
-        services.AddAuthentication(options => 
+        services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options => 
+        }).AddJwtBearer(options =>
         {
             options.TokenValidationParameters = new TokenValidationParameters
             {
