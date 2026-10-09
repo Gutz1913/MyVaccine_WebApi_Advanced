@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using MyVaccine.WebApi.DTOs.Request;
 using MyVaccine.WebApi.Literals;
+using MyVaccine.WebApi.Repositories.Contracts;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -14,18 +15,22 @@ namespace MyVaccine.WebApi.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly UserManager<IdentityUser> _userManager;
-    public AuthController(UserManager<IdentityUser> userManager)
+    private readonly IUserRepository _userRepository;
+    public AuthController(UserManager<IdentityUser> userManager, IUserRepository userRepository)
     {
         _userManager = userManager;
+        _userRepository = userRepository;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequestDTO model)
     {
-        //if (!result.Succeeded)
-        //{
-        //    return BadRequest(result.Errors);
-        //}
+        var result = await _userRepository.AddUser(model);
+
+        if (!result.Succeeded)
+        {
+            return BadRequest(result.Errors);
+        }
 
         return Ok("User registered successfully");
     }
