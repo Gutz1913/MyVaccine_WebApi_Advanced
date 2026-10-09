@@ -7,4 +7,5 @@ public interface IUserService
 {
     Task<AuthResponseDTO> AddUserAsync(RegisterRequestDTO request);
     Task<AuthResponseDTO> Login(LoginRequestDTO request);
+    Task<AuthResponseDTO> RefreshToken(string email);
 }
