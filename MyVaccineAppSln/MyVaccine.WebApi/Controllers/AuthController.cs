@@ -1,13 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyVaccine.WebApi.DTOs.Request;
-using MyVaccine.WebApi.Literals;
-using MyVaccine.WebApi.Repositories.Contracts;
 using MyVaccine.WebApi.Services.Contracts;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace MyVaccine.WebApi.Controllers;
 
@@ -48,6 +41,6 @@ public class AuthController : ControllerBase
         {
             return Unauthorized(response);
         }
-    }   
+    }
 }
 
