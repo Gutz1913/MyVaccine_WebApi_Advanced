@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyVaccine.WebApi.DTOs.Request;
 using MyVaccine.WebApi.Services.Contracts;
+using System.Security.Claims;
 
 namespace MyVaccine.WebApi.Controllers;
 
@@ -42,5 +44,20 @@ public class AuthController : ControllerBase
             return Unauthorized(response);
         }
     }
-}
 
+    [Authorize]
+    [HttpPost("refresh-token")]
+    public async Task<IActionResult> RefreshToken([FromQuery] LoginRequestDTO model)
+    {
+        var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+        var response = await _userService.RefreshToken(claimsIdentity.Name);
+        if (response.IsSuccess)
+        {
+            return Ok(response);
+        }
+        else
+        {
+            return BadRequest(response);
+        }
+    }
+}
