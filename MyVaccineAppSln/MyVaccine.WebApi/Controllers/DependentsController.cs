@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using MyVaccine.WebApi.DTOs.Request;
 using MyVaccine.WebApi.Services.Contracts;
 
