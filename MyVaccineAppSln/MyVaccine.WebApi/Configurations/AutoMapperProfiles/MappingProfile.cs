@@ -14,5 +14,11 @@ public class MappingProfile : Profile
             .ForMember(
                 dest => dest.UserFullName, 
                 opt => opt.MapFrom(src => src.User.FirstName + " " + src.User.LastName));
+
+        CreateMap<AllergyRequestDTO, Allergy>();
+        CreateMap<Allergy, AllergyResponseDTO>()
+            .ForMember(
+                dest => dest.UserFullName, 
+                opt => opt.MapFrom(src => src.User.FirstName + " " + src.User.LastName));
     }
 }
